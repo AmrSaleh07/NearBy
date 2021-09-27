@@ -1,0 +1,48 @@
+PODS:
+  - DeviceKit (4.5.0)
+  - Gloss (3.2.1)
+  - Kingfisher (4.10.1)
+  - NVActivityIndicatorView (5.1.1):
+    - NVActivityIndicatorView/Base (= 5.1.1)
+  - NVActivityIndicatorView/Base (5.1.1)
+  - RxCocoa (5.1.3):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.3):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.3)
+  - SnapKit (4.2.0)
+
+DEPENDENCIES:
+  - DeviceKit
+  - Gloss
+  - Kingfisher
+  - NVActivityIndicatorView
+  - RxCocoa (~> 5)
+  - RxSwift (~> 5)
+  - SnapKit
+
+SPEC REPOS:
+  trunk:
+    - DeviceKit
+    - Gloss
+    - Kingfisher
+    - NVActivityIndicatorView
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SnapKit
+
+SPEC CHECKSUMS:
+  DeviceKit: b68cded46afdaefc5d2253d631d441ba7049a7fe
+  Gloss: 2cda64dd31f12d8c7905273c7883c63ee92bfee3
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
+  RxCocoa: e2ed092d5432e4296aa818021d27de4090ac0354
+  RxRelay: 5a18c2eb2d68326ebaf0112f80d837ae41b92b97
+  RxSwift: 915abbdfb62214aa89ccd0b194d44fb478019b27
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+
+PODFILE CHECKSUM: fa696e348fbb745d87267f02ace20729de1a72cf
+
+COCOAPODS: 1.10.1
