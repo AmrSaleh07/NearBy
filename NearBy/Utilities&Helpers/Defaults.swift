@@ -19,6 +19,11 @@ class Defaults {
         get { return DefaultsKey.appLanguageIdentifier.get() as? String }
         set { newValue != nil ? DefaultsKey.appLanguageIdentifier.set(value: newValue!) : DefaultsKey.appLanguageIdentifier.remove() }
     }
+    
+    static var useRealTimeMode: Bool? {
+        get { return DefaultsKey.useRealTimeMode.get() as? Bool }
+        set { newValue != nil ? DefaultsKey.useRealTimeMode.set(value: newValue!) : DefaultsKey.useRealTimeMode.remove() }
+    }
 }
 
 /// Contains the options of data you nedd to store in UserDefaults.
@@ -28,6 +33,7 @@ class Defaults {
 private enum DefaultsKey:String {
 
     case appLanguageIdentifier
+    case useRealTimeMode
     
     /// Set a value in UserDefaults.
     ///

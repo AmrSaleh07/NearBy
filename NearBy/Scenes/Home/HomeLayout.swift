@@ -13,7 +13,7 @@ class HomeLayout: BaseLayout {
     // MARK: - Views
     lazy var modeButton: UIButton = {
        var button = UIButton()
-        button.setTitle("Realtime", for: .normal)
+        button.setTitle((Defaults.useRealTimeMode ?? true) ? "Single update" : "Realtime", for: .normal)
         button.setTitleColor( #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1), for: .normal)
         return button
     }()

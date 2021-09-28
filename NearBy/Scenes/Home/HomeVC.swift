@@ -27,26 +27,10 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        layout = HomeLayout(superview: self.view)
-        layout.setupViews()
-        layout.tableView.dataSource = self
-        layout.tableView.delegate = self
-        layout.refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        setupUI()
+        configureLocationManager()
         setupRX()
         refreshData()
-        
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.delegate = self
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        } else {
-            UIHelper.makeToast(text: "PLease turn on location services or GPS")
-        }
-        
-        self.title = "Near By"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: layout.modeButton)
-        layout.modeButton.addTarget(self, action: #selector(changeMode), for: .touchUpInside)
     }
 }
 
@@ -73,11 +57,44 @@ extension HomeVC {
         }
     }
     
-    /// Refresh Home data.
+    /// Change fetch nearby places mode.
     /// - Author: Amr Saleh.
     /// - Date: 28 Sep 2021.
     @objc func changeMode() {
-        print("Amr")
+        Defaults.useRealTimeMode!.toggle()
+        layout.modeButton.setTitle((Defaults.useRealTimeMode ?? true) ? "Single update" : "Realtime", for: .normal)
+        if Defaults.useRealTimeMode! {
+            locationManager.startUpdatingLocation()
+        } else {
+            locationManager.stopUpdatingLocation()
+        }
+    }
+    
+    /// Setup and configure UI
+    /// - Author: Amr Saleh.
+    /// - Date: 28 Sep 2021.
+    fileprivate func setupUI() {
+        layout = HomeLayout(superview: self.view)
+        layout.setupViews()
+        layout.tableView.dataSource = self
+        layout.tableView.delegate = self
+        layout.refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        self.title = "Near By"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: layout.modeButton)
+        layout.modeButton.addTarget(self, action: #selector(changeMode), for: .touchUpInside)
+    }
+    
+    /// Configure location manager.
+    /// - Author: Amr Saleh.
+    /// - Date: 28 Sep 2021.
+    fileprivate func configureLocationManager() {
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        } else {
+            UIHelper.makeToast(text: "PLease turn on location services or GPS")
+        }
     }
 }
 
@@ -106,7 +123,6 @@ extension HomeVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         userCurrentLocation = locations.last
         userLocation = locations.last
-        locationManager.stopUpdatingLocation()
         refreshData()
     }
     

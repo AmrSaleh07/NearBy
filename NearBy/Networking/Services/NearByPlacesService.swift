@@ -47,7 +47,8 @@ extension NearByPlacesService: TargetType {
                                         "client_secret": Constants.clientSecret,
                                         "v":"20210928",
                                         "ll": "\(lat),\(lng)",
-                                        "venuePhotos":1]
+                                        "venuePhotos":1,
+                                        "radius":1000]
             return param
         }
     }

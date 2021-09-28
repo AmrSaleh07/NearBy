@@ -31,8 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
     
     func startApplication() {
+        if Defaults.useRealTimeMode == nil {
+            Defaults.useRealTimeMode = true
+        }
         let initialNv: UINavigationController!
-        
         AppDelegate.window = UIWindow(frame: UIScreen.main.bounds)
         initialNv = UINavigationController(rootViewController: instantiateVC(.home))
         AppDelegate.window?.rootViewController = initialNv
