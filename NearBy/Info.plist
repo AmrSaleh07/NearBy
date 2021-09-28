@@ -41,5 +41,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>server_url</key>
+	<string>https://api.foursquare.com/v2</string>
 </dict>
 </plist>

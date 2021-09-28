@@ -17,4 +17,6 @@ class Constants {
     static let defaultCornerRadius = CGFloat(15)
     static let defaultIconSize = 25
     static let defaultTableViewHeaderAndFooterHeight = CGFloat(50)
+    static let clientID = "E2RAIP4KXD0PB3DEKSAXST2EYEVRRNOFBW5X43H3QCP5UKHA"
+    static let clientSecret = "QJNVQU3AIRFLOIOF3QO033NXJAOCFTWG2GB2LOOGUF01LGUE"
 }

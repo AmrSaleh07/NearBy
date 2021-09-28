@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "NearByLocationsTVC.configureCell(venue:):NearByLocationsTVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "venue.categories?.first?.icon?.prefix">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

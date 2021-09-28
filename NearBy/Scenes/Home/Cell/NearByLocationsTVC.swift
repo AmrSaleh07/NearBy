@@ -12,7 +12,6 @@ class NearByLocationsTVC: UITableViewCell {
     // MARK: - Views
     lazy var locationImageView: UIImageView = {
         var imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.image = #imageLiteral(resourceName: "Screen Shot 2021-09-23 at 5.21.25 PM")
         return imageView
@@ -22,18 +21,23 @@ class NearByLocationsTVC: UITableViewCell {
         var label = UILabel()
         label.font = UIFont.getFont(type: .bold, size: 17)
         label.numberOfLines = 2
-        label.text = "Coffee & Tea"
         return label
     }()
     
-    lazy var descriptionLabel: UILabel = {
+    lazy var addressLabel: UILabel = {
         var label = UILabel()
         label.textColor = .darkGray
         label.font = UIFont.getFont(type: .normal, size: 13)
         label.numberOfLines = 0
-        label.text = "Coffee & Tea"
         return label
     }()
+    
+    func configureCell(venue: Venue) {
+        locationNameLabel.text = venue.name
+        addressLabel.text = venue.location?.address
+        locationImageView.setImage(url: (venue.categories?.first?.icon?.prefix ?? "") + "32.png", placeholder: #imageLiteral(resourceName: "الشعار النهائي-1"))
+        //(categories.first!.icon?.iconPrefix)! + "64.png"
+    }
 }
 
 // MARK: - BaseLayoutDelegate
@@ -41,12 +45,13 @@ extension NearByLocationsTVC: BaseLayoutDelegate {
     
     func setupViews() {
         
-        contentView.addSubviews([locationImageView, locationNameLabel, descriptionLabel])
+        contentView.addSubviews([locationImageView, locationNameLabel, addressLabel])
         
         locationImageView.snp.makeConstraints { (make) in
             make.leading.top.equalToSuperview().offset(Constants.defaultOffset)
             make.bottom.equalToSuperview().offset(-Constants.defaultOffset)
-            make.width.height.equalTo(Constants.screenWidth * 0.3)
+            make.width.equalTo(Constants.screenWidth * 0.3)
+            make.height.equalTo(100)
         }
         
         locationNameLabel.snp.makeConstraints { (make) in
@@ -55,7 +60,7 @@ extension NearByLocationsTVC: BaseLayoutDelegate {
             make.trailing.equalToSuperview().offset(-Constants.defaultOffset)
         }
         
-        descriptionLabel.snp.makeConstraints { (make) in
+        addressLabel.snp.makeConstraints { (make) in
             make.top.equalTo(locationNameLabel.snp.bottom).offset(8)
             make.leading.equalTo(locationImageView.snp.trailing).offset(Constants.defaultOffset)
             make.trailing.equalToSuperview().offset(-Constants.defaultOffset)
