@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         startApplication()
         return true
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        switch CLLocationManager.authorizationStatus() {
+        case .denied, .notDetermined, .restricted:
+            isLocationAccessAuthorized = false
+        default:
+            isLocationAccessAuthorized = true
+        }
     }
 }
 

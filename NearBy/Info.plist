@@ -41,6 +41,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>$(PRODUCT_NAME) need access to your location to can fetch nearby places around you.</string>
 	<key>server_url</key>
 	<string>https://api.foursquare.com/v2</string>
 </dict>

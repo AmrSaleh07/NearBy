@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D1EDC52155337A9CA1291E74 /* Pods_NearBy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D34DB9176930BE541CBD705C /* Pods_NearBy.framework */; };
+		E367036527039C7300E2CBFE /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E367036427039C7300E2CBFE /* UIHelper.swift */; };
 		E3CC67482703168B009E5798 /* NetworkReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC67472703168B009E5798 /* NetworkReply.swift */; };
 		E3CC677527031A84009E5798 /* ItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC677427031A84009E5798 /* ItemEntity.swift */; };
 		E3CC677827031AA6009E5798 /* ReasonEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC677727031AA6009E5798 /* ReasonEntity.swift */; };
@@ -48,6 +49,7 @@
 		873B59263BDB448D7D2C17D3 /* Pods-NearBy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NearBy.debug.xcconfig"; path = "Target Support Files/Pods-NearBy/Pods-NearBy.debug.xcconfig"; sourceTree = "<group>"; };
 		BF2C5EE6E5728E1E10AFB4C6 /* Pods-NearBy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NearBy.release.xcconfig"; path = "Target Support Files/Pods-NearBy/Pods-NearBy.release.xcconfig"; sourceTree = "<group>"; };
 		D34DB9176930BE541CBD705C /* Pods_NearBy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NearBy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E367036427039C7300E2CBFE /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		E3CC67472703168B009E5798 /* NetworkReply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReply.swift; sourceTree = "<group>"; };
 		E3CC677427031A84009E5798 /* ItemEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEntity.swift; sourceTree = "<group>"; };
 		E3CC677727031AA6009E5798 /* ReasonEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReasonEntity.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				E3DCE98527022D9E00D79762 /* BaseLayout.swift */,
+				E367036427039C7300E2CBFE /* UIHelper.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				E3D3997B27022059005D1754 /* ViewController.swift in Sources */,
 				E3DCE98627022D9E00D79762 /* BaseLayout.swift in Sources */,
 				E3DCE9992702400500D79762 /* UIFontExtension.swift in Sources */,
+				E367036527039C7300E2CBFE /* UIHelper.swift in Sources */,
 				E3D3999A270228FA005D1754 /* HomeLayout.swift in Sources */,
 				E3D3997727022059005D1754 /* AppDelegate.swift in Sources */,
 				E3DCE99D2702413C00D79762 /* UIViewExtension.swift in Sources */,
@@ -572,7 +576,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Amr-Saleh.NearBy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -591,7 +595,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Amr-Saleh.NearBy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -7,12 +7,24 @@
 
 import UIKit
 import RxSwift
+import CoreLocation
 
 class HomeVC: UIViewController {
 
     var layout: HomeLayout!
     var viewModel:PlacesVM!
+    var locationManager: CLLocationManager!
+    var userLocation: CLLocation?
     private var disposeBag = DisposeBag()
+    
+    // MARK: - Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isLocationAccessAuthorized {
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,6 +36,17 @@ class HomeVC: UIViewController {
         setupRX()
         refreshData()
         
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        } else {
+            UIHelper.makeToast(text: "PLease turn on location services or GPS")
+        }
+        
+        self.title = "Near By"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: layout.modeButton)
+        layout.modeButton.addTarget(self, action: #selector(changeMode), for: .touchUpInside)
     }
 }
 
@@ -36,6 +59,7 @@ extension HomeVC {
     func setupRX() {
 
         viewModel.didFetchNearByPlacesSubject.asDriver().filter({$0}).drive(onNext: { [weak self] _ in
+            self?.layout.refreshControl.endRefreshing()
             self?.layout.tableView.reloadData()
         }).disposed(by: disposeBag)
     }
@@ -44,7 +68,16 @@ extension HomeVC {
     /// - Author: Amr Saleh.
     /// - Date: 28 Sep 2021.
     @objc func refreshData() {
-        viewModel.getNearByPlaces(lat: 30.5965, lng: 32.2715)
+        if userLocation != nil {
+            viewModel.getNearByPlaces(lat: userLocation!.coordinate.latitude, lng: userLocation!.coordinate.longitude)
+        }
+    }
+    
+    /// Refresh Home data.
+    /// - Author: Amr Saleh.
+    /// - Date: 28 Sep 2021.
+    @objc func changeMode() {
+        print("Amr")
     }
 }
 
@@ -65,5 +98,24 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
         }
         return cell
 
+    }
+}
+
+// MARK: - CLLocationManagerDelegate
+extension HomeVC: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        userCurrentLocation = locations.last
+        userLocation = locations.last
+        locationManager.stopUpdatingLocation()
+        refreshData()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse:
+            manager.startUpdatingLocation()
+        default:
+            manager.stopUpdatingLocation()
+        }
     }
 }

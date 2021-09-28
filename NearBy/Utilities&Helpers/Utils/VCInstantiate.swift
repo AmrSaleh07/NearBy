@@ -24,6 +24,7 @@ func instantiateVC(_ vc: VC) -> UIViewController {
     case .home:
         let vc = HomeVC()
         vc.viewModel = PlacesVM(gateway: Gateway<NearByPlacesService>())
+        vc.locationManager = CLLocationManager()
         return vc
     }
 }

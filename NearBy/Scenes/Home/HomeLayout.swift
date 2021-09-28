@@ -9,7 +9,15 @@ import UIKit
 import SnapKit
 
 class HomeLayout: BaseLayout {
+    
     // MARK: - Views
+    lazy var modeButton: UIButton = {
+       var button = UIButton()
+        button.setTitle("Realtime", for: .normal)
+        button.setTitleColor( #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1), for: .normal)
+        return button
+    }()
+    
     lazy var refreshControl: UIRefreshControl = {
         var refreshControl = UIRefreshControl()
         return refreshControl

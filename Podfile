@@ -16,6 +16,7 @@ target 'NearBy' do
   pod 'RxCocoa', '~> 5'
   pod 'NVActivityIndicatorView'
   pod 'DeviceKit'
+  pod 'Toast-Swift'
   
   post_install do |pi|
       pi.pods_project.targets.each do |t|

@@ -13,7 +13,8 @@ class NearByLocationsTVC: UITableViewCell {
     lazy var locationImageView: UIImageView = {
         var imageView = UIImageView()
         imageView.clipsToBounds = true
-        imageView.image = #imageLiteral(resourceName: "Screen Shot 2021-09-23 at 5.21.25 PM")
+        imageView.image = #imageLiteral(resourceName: "images")
+        imageView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1)
         return imageView
     }()
 
@@ -35,8 +36,7 @@ class NearByLocationsTVC: UITableViewCell {
     func configureCell(venue: Venue) {
         locationNameLabel.text = venue.name
         addressLabel.text = venue.location?.address
-        locationImageView.setImage(url: (venue.categories?.first?.icon?.prefix ?? "") + "32.png", placeholder: #imageLiteral(resourceName: "الشعار النهائي-1"))
-        //(categories.first!.icon?.iconPrefix)! + "64.png"
+        locationImageView.setImage(url: (venue.categories?.first?.icon?.prefix ?? "") + "88.png", placeholder: #imageLiteral(resourceName: "images"))
     }
 }
 
