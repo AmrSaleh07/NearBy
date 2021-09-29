@@ -14,7 +14,7 @@ target 'NearBy' do
   pod 'Kingfisher'
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
-  pod 'NVActivityIndicatorView'
+  pod 'NVActivityIndicatorView/Extended'
   pod 'DeviceKit'
   pod 'Toast-Swift'
   

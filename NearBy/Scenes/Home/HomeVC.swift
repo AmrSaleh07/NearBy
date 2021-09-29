@@ -21,7 +21,10 @@ class HomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if isLocationAccessAuthorized {
+            UIHelper.showActivityIndicator()
             locationManager.startUpdatingLocation()
+        } else {
+            UIHelper.showAccessPermissionPopUp(title: "Access Permission", message: "Please enable locations to can help you.")
         }
     }
     
@@ -30,7 +33,6 @@ class HomeVC: UIViewController {
         setupUI()
         configureLocationManager()
         setupRX()
-        refreshData()
     }
 }
 
@@ -44,6 +46,7 @@ extension HomeVC {
 
         viewModel.didFetchNearByPlacesSubject.asDriver().filter({$0}).drive(onNext: { [weak self] _ in
             self?.layout.refreshControl.endRefreshing()
+            self?.setTableViewDataSourceAndDelegate()
             self?.layout.tableView.reloadData()
         }).disposed(by: disposeBag)
     }
@@ -65,8 +68,10 @@ extension HomeVC {
         layout.modeButton.setTitle((Defaults.useRealTimeMode ?? true) ? "Single update" : "Realtime", for: .normal)
         if Defaults.useRealTimeMode! {
             locationManager.startUpdatingLocation()
+            UIHelper.makeToast(text: "Switched to realtime")
         } else {
             locationManager.stopUpdatingLocation()
+            UIHelper.makeToast(text: "Switched to single update")
         }
     }
     
@@ -76,12 +81,19 @@ extension HomeVC {
     fileprivate func setupUI() {
         layout = HomeLayout(superview: self.view)
         layout.setupViews()
-        layout.tableView.dataSource = self
-        layout.tableView.delegate = self
         layout.refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         self.title = "Near By"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: layout.modeButton)
         layout.modeButton.addTarget(self, action: #selector(changeMode), for: .touchUpInside)
+    }
+    
+    /// Set TableView data source and delegate
+    /// - Author: Amr Saleh.
+    /// - Date: 28 Sep 2021.
+    fileprivate func setTableViewDataSourceAndDelegate() {
+        layout.tableView.dataSource = self
+        layout.tableView.delegate = self
+        layout.tableView.registerCellNib(cellClass: NoDataTVC.self)
     }
     
     /// Configure location manager.
@@ -102,19 +114,23 @@ extension HomeVC {
 
 extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.nearByPlaces.count
+        return viewModel.nearByPlaces.isEmpty ? 1 : viewModel.nearByPlaces.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NearByLocationsTVC.reusedIdentifier, for: indexPath) as!
-            NearByLocationsTVC
-        cell.setupViews()
-        cell.selectionStyle = .none
-        if let venue = viewModel.nearByPlaces[indexPath.row].venue {
-            cell.configureCell(venue: venue)
+        if viewModel.nearByPlaces.isEmpty {
+             let cell = tableView.dequeue() as NoDataTVC
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: NearByLocationsTVC.reusedIdentifier, for: indexPath) as!
+                NearByLocationsTVC
+            cell.setupViews()
+            cell.selectionStyle = .none
+            if let venue = viewModel.nearByPlaces[indexPath.row].venue {
+                cell.configureCell(venue: venue)
+            }
+            return cell
         }
-        return cell
-
     }
 }
 

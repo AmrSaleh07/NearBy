@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		D1EDC52155337A9CA1291E74 /* Pods_NearBy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D34DB9176930BE541CBD705C /* Pods_NearBy.framework */; };
 		E367036527039C7300E2CBFE /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E367036427039C7300E2CBFE /* UIHelper.swift */; };
+		E36703D62703EC7400E2CBFE /* NoDataTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36703D42703EC7400E2CBFE /* NoDataTVC.swift */; };
+		E36703D72703EC7400E2CBFE /* NoDataTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E36703D52703EC7400E2CBFE /* NoDataTVC.xib */; };
+		E36703F22703F12500E2CBFE /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36703F12703F12500E2CBFE /* UIViewController+Extension.swift */; };
 		E3CC67482703168B009E5798 /* NetworkReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC67472703168B009E5798 /* NetworkReply.swift */; };
 		E3CC677527031A84009E5798 /* ItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC677427031A84009E5798 /* ItemEntity.swift */; };
 		E3CC677827031AA6009E5798 /* ReasonEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC677727031AA6009E5798 /* ReasonEntity.swift */; };
@@ -50,6 +53,9 @@
 		BF2C5EE6E5728E1E10AFB4C6 /* Pods-NearBy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NearBy.release.xcconfig"; path = "Target Support Files/Pods-NearBy/Pods-NearBy.release.xcconfig"; sourceTree = "<group>"; };
 		D34DB9176930BE541CBD705C /* Pods_NearBy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NearBy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E367036427039C7300E2CBFE /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		E36703D42703EC7400E2CBFE /* NoDataTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataTVC.swift; sourceTree = "<group>"; };
+		E36703D52703EC7400E2CBFE /* NoDataTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoDataTVC.xib; sourceTree = "<group>"; };
+		E36703F12703F12500E2CBFE /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		E3CC67472703168B009E5798 /* NetworkReply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReply.swift; sourceTree = "<group>"; };
 		E3CC677427031A84009E5798 /* ItemEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEntity.swift; sourceTree = "<group>"; };
 		E3CC677727031AA6009E5798 /* ReasonEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReasonEntity.swift; sourceTree = "<group>"; };
@@ -100,6 +106,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E36703D32703EC5600E2CBFE /* NoDataTVC */ = {
+			isa = PBXGroup;
+			children = (
+				E36703D42703EC7400E2CBFE /* NoDataTVC.swift */,
+				E36703D52703EC7400E2CBFE /* NoDataTVC.xib */,
+			);
+			path = NoDataTVC;
+			sourceTree = "<group>";
+		};
 		E3CC679127032071009E5798 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +217,7 @@
 		E3DCE98927022E1100D79762 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				E36703D32703EC5600E2CBFE /* NoDataTVC */,
 				E3DCE98A27022E3800D79762 /* NearByLocationsTVC.swift */,
 			);
 			path = Cell;
@@ -214,6 +230,7 @@
 				E3DCE99C2702413C00D79762 /* UIViewExtension.swift */,
 				E3CC67C4270365AB009E5798 /* UITableView+Extension.swift */,
 				E3CC67CC27036BCC009E5798 /* UIImageView+Extension.swift */,
+				E36703F12703F12500E2CBFE /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -342,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3D399832702205C005D1754 /* LaunchScreen.storyboard in Resources */,
+				E36703D72703EC7400E2CBFE /* NoDataTVC.xib in Resources */,
 				E3D399802702205C005D1754 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,8 +431,10 @@
 				E3D3999A270228FA005D1754 /* HomeLayout.swift in Sources */,
 				E3D3997727022059005D1754 /* AppDelegate.swift in Sources */,
 				E3DCE99D2702413C00D79762 /* UIViewExtension.swift in Sources */,
+				E36703F22703F12500E2CBFE /* UIViewController+Extension.swift in Sources */,
 				E3DCE9B827027FF600D79762 /* Environment.swift in Sources */,
 				E3DCE98B27022E3800D79762 /* NearByLocationsTVC.swift in Sources */,
+				E36703D62703EC7400E2CBFE /* NoDataTVC.swift in Sources */,
 				E3DCE9CE2702950200D79762 /* BeenHereEntity.swift in Sources */,
 				E3CC677527031A84009E5798 /* ItemEntity.swift in Sources */,
 				E3DCE9D12702952100D79762 /* CategoryEntity.swift in Sources */,

@@ -34,6 +34,7 @@ extension PlacesVM {
     func getNearByPlaces(lat: Double, lng: Double) {
         gateway.request(target: .recommended(lat: lat, lng: lng), responseType: FoursquareSearchEntity.self) { [weak self] (_, _, _, response) in
             guard let self = self else { return }
+            UIHelper.hideActivityIndicator()
             self.nearByPlaces = response?.response?.groups?.first?.items ?? []
             self.didFetchNearByPlacesSubject.accept(true)
         }
