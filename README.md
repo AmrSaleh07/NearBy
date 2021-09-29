@@ -41,5 +41,3 @@ $ open "NearBy.xcworkspace"
 <img src="https://user-images.githubusercontent.com/27419585/135190541-95375fee-1269-44a2-bde7-b4ba8a4b5444.png"  width="250"/>
 <img src="https://user-images.githubusercontent.com/27419585/135190597-5a915a75-1d25-413c-930d-f04e54b0233a.png"  width="250"/>
 
-## License
-MIT
